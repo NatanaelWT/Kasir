@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [IndexController::class, 'index']);
+Route::get('/stok', [IndexController::class, 'show']);
+Route::get('/history', [IndexController::class, 'history']);
+Route::post('/add', [IndexController::class, 'store']);
+Route::post('/transaction', [IndexController::class, 'transaction']);
+Route::get('/tambah', [IndexController::class, 'create']);
+Route::get('/error', [IndexController::class, 'alert']);
+Route::get('/edit/{id}', [IndexController::class, 'edit']);
+Route::post('/update/{id}', [IndexController::class, 'update']);
+Route::get('/delete/{id}', [IndexController::class, 'destroy']);
